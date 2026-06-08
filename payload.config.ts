@@ -54,20 +54,11 @@ export default buildConfig({
     // In production (Vercel), pushDevSchema is skipped by connect.js.
     // We force-push the schema here to ensure tables exist on every cold start.
     if (process.env.NODE_ENV === 'production') {
-      try {
-        const db = payload.db as any
-        const { pushSchema } = db.requireDrizzleKit()
-        const { apply, warnings } = await pushSchema(db.schema, db.drizzle)
-        if (!warnings.length) {
-          await apply()
-          payload.logger.info('✅ Schema pushed to SQLite (production cold start)')
-        } else {
-          await apply()
-          payload.logger.warn('Schema pushed with warnings: ' + warnings.join(', '))
-        }
-      } catch (err) {
-        payload.logger.error('Schema push failed: ' + String(err))
-      }
+      const db = payload.db as any
+      const { pushSchema } = db.requireDrizzleKit()
+      const { apply, warnings } = await pushSchema(db.schema, db.drizzle)
+      await apply()
+      payload.logger.info(`✅ Schema pushed (warnings: ${warnings.length})`)
     }
 
     const themesCount = await payload.find({ collection: 'themes', limit: 1 })
