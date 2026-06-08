@@ -1,7 +1,9 @@
 export function SiteFooter() {
   return (
-    <footer style={{ background: '#151414', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '24px 48px', marginTop: 48 }}>
-      <div style={{ fontSize: 14 }}>PIJL · Лабораторія журналістики суспільного інтересу</div>
+    <footer style={{ background: '#C9FF8F', padding: '40px 80px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 80 }}>
+      <div style={{ fontFamily: "'Source Sans 3', Arial, sans-serif", fontSize: 13, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase' as const }}>
+        PIJL · Лабораторія журналістики суспільного інтересу
+      </div>
       <div style={{ display: 'flex', gap: 24 }}>
         {[
           { href: 'https://journlab.online/news', label: 'Новини' },
@@ -9,7 +11,7 @@ export function SiteFooter() {
           { href: 'https://journlab.online/team', label: 'Команда' },
           { href: 'https://journlab.online/donations', label: 'Підтримати' },
         ].map(({ href, label }) => (
-          <a key={href} href={href} style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', textDecoration: 'none' }}>{label}</a>
+          <a key={href} href={href} style={{ fontSize: 13, color: '#151414', textDecoration: 'none', opacity: 0.7 }}>{label}</a>
         ))}
       </div>
     </footer>
