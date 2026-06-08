@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 import { SiteHeader } from '@/components/SiteHeader'
