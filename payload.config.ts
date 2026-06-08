@@ -47,6 +47,7 @@ export default buildConfig({
     client: {
       url: process.env.DATABASE_URL || 'file:./journlab.db',
     },
+    push: process.env.NODE_ENV === 'production',
   }),
   sharp,
   plugins: [],
